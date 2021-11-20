@@ -1,0 +1,121 @@
+<div>
+    <h2>Gerenciamento de Endereços</h2>
+    <button mat-button (click)="novoEndereco()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-table [dataSource]="enderecos">
+        
+        <!--Logradouro-->
+        <ng-container matColumnDef="logradouro">
+            <mat-header-cell *matHeaderCellDef>
+                Logradouro
+            </mat-header-cell>
+            <mat-cell *matCellDef="let endereco">
+                {{endereco.logradouro}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Numero-->
+        <ng-container matColumnDef="numero">
+            <mat-header-cell *matHeaderCellDef>
+                Número
+            </mat-header-cell>
+            <mat-cell *matCellDef="let endereco">
+                {{endereco.numero}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Complemento-->
+        <ng-container matColumnDef="complemento">
+            <mat-header-cell *matHeaderCellDef>
+                Complemento
+            </mat-header-cell>
+            <mat-cell *matCellDef="let endereco">
+                {{endereco.complemento}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Bairro-->
+        <ng-container matColumnDef="bairro">
+            <mat-header-cell *matHeaderCellDef>
+                Bairro
+            </mat-header-cell>
+            <mat-cell *matCellDef="let endereco">
+                {{endereco.bairro}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Cidade-->
+        <ng-container matColumnDef="cidade">
+            <mat-header-cell *matHeaderCellDef>
+                Cidade
+            </mat-header-cell>
+            <mat-cell *matCellDef="let endereco">
+                {{endereco.cidade}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Estado-->
+        <ng-container matColumnDef="estado">
+            <mat-header-cell *matHeaderCellDef>
+                Estado
+            </mat-header-cell>
+            <mat-cell *matCellDef="let endereco">
+                {{endereco.estado}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--País-->
+        <ng-container matColumnDef="pais">
+            <mat-header-cell *matHeaderCellDef>
+                País
+            </mat-header-cell>
+            <mat-cell *matCellDef="let endereco">
+                {{endereco.pais}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Cep-->
+        <ng-container matColumnDef="cep">
+            <mat-header-cell *matHeaderCellDef>
+                Cep
+            </mat-header-cell>
+            <mat-cell *matCellDef="let endereco">
+                {{endereco.cep}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Ações de editar e remover-->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+                Ações
+            </mat-header-cell>
+            <mat-cell *matCellDef="let endereco">
+                <button mat-button (click)="selecionarEndereco(endereco)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button (click)="excluir(endereco)">
+                    <mat-icon>remove_circle</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns"></mat-row>
+    </mat-table>
+
+
+    <div *ngIf="enderecoEdicao != undefined">
+        <h3>Inserir/Editar</h3>
+        <input placeholder="Logradouro" [(ngModel)]="enderecoEdicao.logradouro"><br>
+        <input placeholder="Numero" [(ngModel)]="enderecoEdicao.numero"><br>
+        <input placeholder="Complemento" [(ngModel)]="enderecoEdicao.complemento"><br>
+        <input placeholder="Bairro" [(ngModel)]="enderecoEdicao.bairro"><br>
+        <input placeholder="Cidade" [(ngModel)]="enderecoEdicao.cidade"><br>
+        <input placeholder="Numero" [(ngModel)]="enderecoEdicao.cep"><br>
+        <input placeholder="Estado" [(ngModel)]="enderecoEdicao.estado"><br>
+        <input placeholder="Pais" [(ngModel)]="enderecoEdicao.pais"><br>
+        <button (click)="cancelar()">Cancelar</button>
+        <button (click)="salvar()">Salvar</button>
+    </div>
+</div>
