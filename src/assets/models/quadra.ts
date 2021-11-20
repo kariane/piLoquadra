@@ -1,7 +1,7 @@
 export class Quadra {
-    id_quadra?: number;
-    id_locador?: number;
-    id_endereco?: number;
+    id?: number;
+    isLocador?: number;
+    idEndereco?: number;
     tipo_quadra?: string;
     descricao?: string;
 

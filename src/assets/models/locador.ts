@@ -1,5 +1,5 @@
 export class Locador {
-    id_locador?: number;
+    id?: number;
     nome?: string;
     email?: string;
     celular?: string;

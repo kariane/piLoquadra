@@ -12,6 +12,6 @@ export class Relatorio2Service{
 
   //GET
   listar(): Observable<Relatorio2[]> {
-    return this.http.get<Relatorio2[]>('http://localhost:8080/exemplo-cadastro/webapi/relatorio/relatorio2')
+    return this.http.get<Relatorio2[]>('http://localhost:8080/exemplo-cadastro/webapi/relatorio2')
   }
 }

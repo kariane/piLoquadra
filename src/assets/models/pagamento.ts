@@ -1,5 +1,5 @@
 export class Pagamento {
-    id_pagamento?: number;
-    tipo_pagamento?: string;
+    id?: number;
+    tipoPagamento?: string;
 
 }

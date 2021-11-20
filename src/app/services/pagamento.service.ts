@@ -1,4 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pagamento } from 'src/assets/models/pagamento';
@@ -26,9 +27,13 @@ export class PagamentoService{
   }
 
   //DELETE
-  excluir(id: number): Observable<void> {
-    let parametro = new HttpParams();
-    parametro = parametro.append('id', id);
-    return this.http.delete<void>('http://localhost:8080/exemplo-cadastro/webapi/pagamento', {params: parametro});
+  excluir(id: number): Observable<void> { 
+    return this.http.request<void>('DELETE', 'http://localhost:8080/exemplo-cadastro/webapi/pagamento', {
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+      }),
+      body: { id: id }
+  });
+   
   }
 }

@@ -1,4 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Quadra } from 'src/assets/models/quadra';
@@ -26,9 +27,13 @@ export class QuadraService{
   }
 
   //DELETE
-  excluir(id: number): Observable<void> {
-    let parametro = new HttpParams();
-    parametro = parametro.append('id', id);
-    return this.http.delete<void>('http://localhost:8080/exemplo-cadastro/webapi/quadra', {params: parametro});
+  excluir(id: number): Observable<void> { 
+    return this.http.request<void>('DELETE', 'http://localhost:8080/exemplo-cadastro/webapi/quadra', {
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+      }),
+      body: { id: id }
+  });
+   
   }
 }
