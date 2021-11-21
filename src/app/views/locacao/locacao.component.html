@@ -1,1 +1,77 @@
-<p>locacao works!</p>
+<div>
+    <h2>Gerenciamento de Locação</h2>
+    <button mat-button (click)="novoLocacao()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-table [dataSource]="locacoes">
+        
+        <!--Data Hora Inicial-->
+        <ng-container matColumnDef="data_hora_inicial">
+            <mat-header-cell *matHeaderCellDef>
+                Hora Inicial
+            </mat-header-cell>
+            <mat-cell *matCellDef="let locacao">
+                {{locacao.data_hora_inicial}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Data Hora Final-->
+        <ng-container matColumnDef="data_hora_final">
+            <mat-header-cell *matHeaderCellDef>
+                Hora Final
+            </mat-header-cell>
+            <mat-cell *matCellDef="let locacao">
+                {{locacao.data_hora_final}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Valor-->
+        <ng-container matColumnDef="valor">
+            <mat-header-cell *matHeaderCellDef>
+                Valor
+            </mat-header-cell>
+            <mat-cell *matCellDef="let locacao">
+                {{locacao.valor}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Status Locacao-->
+        <ng-container matColumnDef="status_locacao">
+            <mat-header-cell *matHeaderCellDef>
+                Status Locação
+            </mat-header-cell>
+            <mat-cell *matCellDef="let locacao">
+                {{locacao.status_locacao}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Ações de editar e remover-->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+                Ações
+            </mat-header-cell>
+            <mat-cell *matCellDef="let locacao">
+                <button mat-button (click)="selecionarLocacao(locacao)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button (click)="excluir(locacao)">
+                    <mat-icon>remove_circle</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns"></mat-row>
+    </mat-table>
+
+
+    <div *ngIf="locacaoEdicao != undefined">
+        <h3>Inserir/Editar</h3>
+        <input placeholder="Hora Inicial" [(ngModel)]="locacaoEdicao.data_hora_inicial"><br>
+        <input placeholder="Hora Final" [(ngModel)]="locacaoEdicao.data_hora_final"><br>
+        <input placeholder="Valor" [(ngModel)]="locacaoEdicao.valor"><br>
+        <input placeholder="Status" [(ngModel)]="locacaoEdicao.status_locacao"><br>
+        <button (click)="cancelar()">Cancelar</button>
+        <button (click)="salvar()">Salvar</button>
+    </div>
+</div>

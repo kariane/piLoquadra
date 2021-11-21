@@ -1,1 +1,44 @@
-<p>pagamento works!</p>
+<div>
+    <h2>Gerenciamento de Quadras</h2>
+    <button mat-button (click)="novoPagamento()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-table [dataSource]="pagamentos">
+        
+        <!--Tipo Pagamento-->
+        <ng-container matColumnDef="tipoPagamento">
+            <mat-header-cell *matHeaderCellDef>
+                Forma de Pagamento
+            </mat-header-cell>
+            <mat-cell *matCellDef="let pagamento">
+                {{pagamento.tipoPagamento}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Ações de editar e remover-->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+                Ações
+            </mat-header-cell>
+            <mat-cell *matCellDef="let pagamento">
+                <button mat-button (click)="selecionarPagamento(pagamento)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button (click)="excluir(pagamento)">
+                    <mat-icon>remove_circle</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns"></mat-row>
+    </mat-table>
+
+
+    <div *ngIf="pagamentoEdicao != undefined">
+        <h3>Inserir/Editar</h3>
+        <input placeholder="Tipo de Pagamento" [(ngModel)]="pagamentoEdicao.tipo_pagamento"><br>
+        <button (click)="cancelar()">Cancelar</button>
+        <button (click)="salvar()">Salvar</button>
+    </div>
+</div>

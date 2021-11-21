@@ -12,7 +12,7 @@ export class LocadorComponent implements OnInit {
 
 //atributo variavel
 locadores = new Array<Locador>();
-columns = ['nome','email','celular','documento_cnpj','documento_cpf'];
+columns = ['nome','email','celular','documento_cnpj','documento_cpf','actions'];
 locadorEdicao?: Locador = undefined;
 estaEditando = false;
 
@@ -22,7 +22,7 @@ ngOnInit(): void {
   this.listarLocador();
 }
 
-//Listar Enderecos
+//Listar Locador
 listarLocador(): void{
   this.locadorService.listar().subscribe(locadores => {
     this.locadores = locadores;
@@ -46,7 +46,7 @@ salvar(): void{
   });
   }
 }
- //Novo Endereco
+ //Novo Locador
 novoLocador() {
   this.locadorEdicao = new Locador();
   this.estaEditando = false;
@@ -56,7 +56,7 @@ cancelar() {
   this.locadorEdicao = undefined;
   this.estaEditando = false;
 }
-//Selecionar Endereco
+//Selecionar Locador
 selecionarLocador(locador: Locador) {
   this.locadorEdicao = locador;
   this.estaEditando = true;

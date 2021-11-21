@@ -12,18 +12,18 @@ export class QuadraComponent implements OnInit {
 
 //atributo variavel
 quadras = new Array<Quadra>();
-columns = ['idLocador','idEndereco','nomeQuadra','tipoQuadra','descricao'];
+columns = ['nomeQuadra','tipoQuadra','descricao','actions'];
 quadraEdicao?: Quadra = undefined;
 estaEditando = false;
 
 constructor(private quadraService: QuadraService) { }
 
 ngOnInit(): void {
-  this.listarQuadras();
+  this.listarQuadra();
 }
 
 //Listar Enderecos
-listarQuadras(): void{
+listarQuadra(): void{
   this.quadraService.listar().subscribe(quadras => {
     this.quadras = quadras;
   });
@@ -36,12 +36,12 @@ salvar(): void{
   }
   if(!this.estaEditando){
   this.quadraService.inserir(this.quadraEdicao).subscribe(() => {
-    this.listarQuadras();
+    this.listarQuadra();
     this.cancelar();
   });
 }else{
   this.quadraService.atualizar(this.quadraEdicao).subscribe(() =>{
-    this.listarQuadras();
+    this.listarQuadra();
     this.cancelar();
   });
   }
@@ -67,7 +67,7 @@ excluir(quadra: Quadra) {
   const resposta = confirm(` ${quadra.id} será excluido.`);
   if(resposta && quadra && quadra.id){
     this.quadraService.excluir(quadra.id).subscribe(() => {
-      this.listarQuadras();
+      this.listarQuadra();
     });
   }
 }

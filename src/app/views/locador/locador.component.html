@@ -1,1 +1,88 @@
+<div>
+    <h2>Gerenciamento do Locador</h2>
+    <button mat-button (click)="novoLocador()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-table [dataSource]="locadores">
+        
+        <!--Nome-->
+        <ng-container matColumnDef="nome">
+            <mat-header-cell *matHeaderCellDef>
+                Nome
+            </mat-header-cell>
+            <mat-cell *matCellDef="let locador">
+                {{locador.nome}} 
+            </mat-cell>
+        </ng-container>
 
+        <!--Email-->
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>
+                E-mail
+            </mat-header-cell>
+            <mat-cell *matCellDef="let locador">
+                {{locador.email}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Celular-->
+        <ng-container matColumnDef="celular">
+            <mat-header-cell *matHeaderCellDef>
+                Celular
+            </mat-header-cell>
+            <mat-cell *matCellDef="let locador">
+                {{locador.celular}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--CNPJ-->
+        <ng-container matColumnDef="documento_cnpj">
+            <mat-header-cell *matHeaderCellDef>
+                CNPJ
+            </mat-header-cell>
+            <mat-cell *matCellDef="let locador">
+                {{locador.documento_cnpj}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--CPF-->
+        <ng-container matColumnDef="documento_cpf">
+            <mat-header-cell *matHeaderCellDef>
+                CPF
+            </mat-header-cell>
+            <mat-cell *matCellDef="let locador">
+                {{locador.documento_cpf}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Ações de editar e remover-->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+                Ações
+            </mat-header-cell>
+            <mat-cell *matCellDef="let locador">
+                <button mat-button (click)="selecionarLocador(locador)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button (click)="excluir(locador)">
+                    <mat-icon>remove_circle</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns"></mat-row>
+    </mat-table>
+
+
+    <div *ngIf="locadorEdicao != undefined">
+        <h3>Inserir/Editar</h3>
+        <input placeholder="Nome" [(ngModel)]="locadorEdicao.nome"><br>
+        <input placeholder="E-mail" [(ngModel)]="locadorEdicao.email"><br>
+        <input placeholder="Celular" [(ngModel)]="locadorEdicao.celular"><br>
+        <input placeholder="CNPJ" [(ngModel)]="locadorEdicao.documento_cpf"><br>
+        <input placeholder="CPF" [(ngModel)]="locadorEdicao.documento_cpf"><br>
+        <button (click)="cancelar()">Cancelar</button>
+        <button (click)="salvar()">Salvar</button>
+    </div>
+</div>

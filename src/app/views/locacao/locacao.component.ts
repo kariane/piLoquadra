@@ -12,7 +12,7 @@ export class LocacaoComponent implements OnInit {
 
 //atributo variavel
 locacoes = new Array<Locacao>();
-columns = ['idUsuario','idQuadra','idPagamento','data_hora_inicial','data_hora_final','valor','status_locacao'];
+columns = ['data_hora_inicial','data_hora_final','valor','status_locacao','actions'];
 locacaoEdicao?: Locacao = undefined;
 estaEditando = false;
 
@@ -22,13 +22,12 @@ ngOnInit(): void {
   this.listarLocacao();
 }
 
-//Listar Enderecos
+//Listar Locacao
 listarLocacao(): void{
   this.locacaoService.listar().subscribe(locacoes => {
     this.locacoes = locacoes;
   });
 }
-
 
 //Salvar
 salvar(): void{
@@ -47,8 +46,8 @@ salvar(): void{
   });
   }
 }
- //Novo Endereco
-novoEndereco() {
+ //Nova Locacao
+novoLocacao() {
   this.locacaoEdicao = new Locacao();
   this.estaEditando = false;
 }
@@ -57,7 +56,7 @@ cancelar() {
   this.locacaoEdicao = undefined;
   this.estaEditando = false;
 }
-//Selecionar Endereco
+//Selecionar Locacao
 selecionarLocacao(locacao: Locacao) {
   this.locacaoEdicao = locacao;
   this.estaEditando = true;
@@ -74,3 +73,4 @@ excluir(locacao: Locacao) {
 }
 
 }
+

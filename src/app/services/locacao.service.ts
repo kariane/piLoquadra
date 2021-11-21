@@ -34,6 +34,5 @@ export class LocacaoService{
       }),
       body: { id: id }
   });
-   
   }
 }

@@ -1,5 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pagamento } from 'src/assets/models/pagamento';
@@ -34,6 +33,5 @@ export class PagamentoService{
       }),
       body: { id: id }
   });
-   
   }
 }

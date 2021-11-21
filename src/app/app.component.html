@@ -3,15 +3,41 @@
       <button mat-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <h1>Loquadra</h1>
+      <h1>LoQuadra</h1>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-sidenav-container>
     <mat-sidenav class="sidenav" #sidenav mode="side" opened="true">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/usuario">
+          <mat-icon class="menu-icon">face</mat-icon>Usuario
+        </a>
+      </mat-nav-list>
         <mat-nav-list>
           <a mat-list-item routerLink="/endereco">
             <mat-icon class="menu-icon">location_on</mat-icon>Endereço
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/locacao">
+            <mat-icon class="menu-icon">store</mat-icon>Locação
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/locador">
+            <mat-icon class="menu-icon">account_circle</mat-icon>Locador
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/quadra">
+            <mat-icon class="menu-icon">view_list</mat-icon>Quadra
+          </a>
+        </mat-nav-list>
+
+        <mat-nav-list>
+          <a mat-list-item routerLink="/pagamento">
+            <mat-icon class="menu-icon">paid</mat-icon>Pagamento
           </a>
         </mat-nav-list>
     </mat-sidenav>

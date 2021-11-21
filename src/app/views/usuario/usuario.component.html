@@ -1,1 +1,76 @@
-<p>usuario works!</p>
+<div>
+    <h2>Gerenciamento dos Usuarios</h2>
+    <button mat-button (click)="novoUsuario()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-table [dataSource]="usuarios">
+        
+        <!--Nome-->
+        <ng-container matColumnDef="nome">
+            <mat-header-cell *matHeaderCellDef>
+                Nome
+            </mat-header-cell>
+            <mat-cell *matCellDef="let usuario">
+                {{usuario.nome}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Email-->
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>
+                E-mail
+            </mat-header-cell>
+            <mat-cell *matCellDef="let usuario">
+                {{usuario.email}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Celular-->
+        <ng-container matColumnDef="celular">
+            <mat-header-cell *matHeaderCellDef>
+                Celular
+            </mat-header-cell>
+            <mat-cell *matCellDef="let usuario">
+                {{usuario.celular}} 
+            </mat-cell>
+        </ng-container>
+
+        <!--Documento-->
+        <ng-container matColumnDef="documento">
+            <mat-header-cell *matHeaderCellDef>
+                Documento
+            </mat-header-cell>
+            <mat-cell *matCellDef="let usuario">
+                {{usuario.documento}} 
+            </mat-cell>
+        </ng-container>
+    <!--Ações de editar e remover-->
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+            Ações
+        </mat-header-cell>
+        <mat-cell *matCellDef="let usuario">
+            <button mat-button (click)="selecionarUsuario(usuario)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-button (click)="excluir(usuario)">
+                <mat-icon>remove_circle</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns"></mat-row>
+</mat-table>
+
+
+    <div *ngIf="usuarioEdicao != undefined">
+        <h3>Inserir/Editar</h3>
+        <input placeholder="Nome" [(ngModel)]="usuarioEdicao.nome"><br>
+        <input placeholder="E-mail" [(ngModel)]="usuarioEdicao.email"><br>
+        <input placeholder="Celular" [(ngModel)]="usuarioEdicao.celular"><br>
+        <input placeholder="Documento" [(ngModel)]="usuarioEdicao.documento"><br>
+        <button (click)="cancelar()">Cancelar</button>
+        <button (click)="salvar()">Salvar</button>
+    </div>
+</div>

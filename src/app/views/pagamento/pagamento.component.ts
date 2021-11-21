@@ -12,7 +12,7 @@ export class PagamentoComponent implements OnInit {
 
 //atributo variavel
 pagamentos = new Array<Pagamento>();
-columns = ['tipoPagamento'];
+columns = ['tipoPagamento','actions'];
 pagamentoEdicao?: Pagamento = undefined;
 estaEditando = false;
 
@@ -22,7 +22,7 @@ ngOnInit(): void {
   this.listarPagamento();
 }
 
-//Listar Enderecos
+//Listar Pagamentos
 listarPagamento(): void{
   this.pagamentoService.listar().subscribe(pagamentos => {
     this.pagamentos = pagamentos;
@@ -46,7 +46,7 @@ salvar(): void{
   });
   }
 }
- //Novo Endereco
+ //Novo Pagamento
 novoPagamento() {
   this.pagamentoEdicao = new Pagamento();
   this.estaEditando = false;
@@ -73,4 +73,3 @@ excluir(pagamento: Pagamento) {
 }
 
 }
-

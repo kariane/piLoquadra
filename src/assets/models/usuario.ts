@@ -4,5 +4,5 @@ export class Usuario{
     email?: string;
     celular?: string;
     documento?: string;
-    idEndereco?: number;   
+    id_endereco?: number;   
 }
