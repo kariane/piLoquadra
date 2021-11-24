@@ -4,7 +4,7 @@
         <mat-icon>add</mat-icon>
     </button>
     <mat-table [dataSource]="locacoes">
-        
+
         <!--Data Hora Inicial-->
         <ng-container matColumnDef="data_hora_inicial">
             <mat-header-cell *matHeaderCellDef>
@@ -44,6 +44,7 @@
                 {{locacao.status_locacao}} 
             </mat-cell>
         </ng-container>
+        
 
         <!--Ações de editar e remover-->
         <ng-container matColumnDef="actions">

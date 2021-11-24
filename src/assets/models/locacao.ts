@@ -1,8 +1,5 @@
 export class Locacao{
     id?: number;
-    id_usuario?: number;
-    id_quadra?: number;
-    id_pagamento?: number;
     data_hora_inicial?: Date;
     data_hora_final?: Date;
     valor?: number;

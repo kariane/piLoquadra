@@ -22,7 +22,7 @@ ngOnInit(): void {
   this.listarQuadra();
 }
 
-//Listar Enderecos
+//Listar Quadra
 listarQuadra(): void{
   this.quadraService.listar().subscribe(quadras => {
     this.quadras = quadras;
@@ -46,7 +46,7 @@ salvar(): void{
   });
   }
 }
- //Novo Endereco
+ //Novo Quadra
 novoQuadra() {
   this.quadraEdicao = new Quadra();
   this.estaEditando = false;
@@ -56,7 +56,7 @@ cancelar() {
   this.quadraEdicao = undefined;
   this.estaEditando = false;
 }
-//Selecionar Endereco
+//Selecionar Quadra
 selecionarQuadra(quadra: Quadra) {
   this.quadraEdicao = quadra;
   this.estaEditando = true;
